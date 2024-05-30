@@ -39,7 +39,10 @@ function App() {
   return (
     <section className=" min-h-screen w-full flex flex-col items-center justify-center px-4 md:px-12">
       {data?.pages.map((page, pageIndex) => (
-        <div key={pageIndex} className="grid md:grid-cols-3 grid-cols-2 gap-4">
+        <div
+          key={pageIndex}
+          className="grid md:grid-cols-3 grid-cols-2 gap-4 py-12"
+        >
           {page.map((item: IImage) => (
             <div key={item.id} className="relative">
               <img
@@ -48,7 +51,7 @@ function App() {
                 className="w-full h-full rounded-2xl object-center object-cover"
                 loading="lazy"
               />
-              <div className="flex gap-4 items-center">
+              <div className="flex gap-4 items-center absolute bottom-4 right-4">
                 <button onClick={() => handleCopy(item.url)}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
