@@ -48,7 +48,7 @@ function App() {
     }
   };
   return (
-    <section className=" min-h-screen w-full flex flex-col items-center justify-center px-4 md:px-12 md:py-12 py-6">
+    <section className=" min-h-screen w-full flex flex-col items-center justify-center px-4 md:px-12 md:py-12 py-4">
       {data?.pages.map((page, pageIndex) => (
         <div key={pageIndex} className="grid md:grid-cols-3 grid-cols-2 gap-4">
           {page.map((item: IImage) => (
