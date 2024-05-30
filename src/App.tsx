@@ -50,6 +50,7 @@ function App() {
   };
   return (
     <section className=" min-h-screen w-full flex flex-col items-center justify-center px-4 md:px-12 md:py-12 py-4">
+      {isLoading && <Loading />}
       {data?.pages.map((page, pageIndex) => (
         <div
           key={pageIndex}
@@ -104,7 +105,6 @@ function App() {
           ))}
         </div>
       ))}
-      {isLoading && <Loading />}
       <div ref={ref} style={{ height: "20px" }} />
       {isFetchingNextPage && <Loading />}
     </section>
