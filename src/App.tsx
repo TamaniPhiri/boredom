@@ -15,13 +15,37 @@ function App() {
     }
   }, [inView, fetchNextPage, hasNextPage]);
 
+  const handleCopy = (url: string) => {
+    navigator.clipboard
+      .writeText(url)
+      .then(() => {
+        alert("URL copied to clipboard");
+      })
+      .catch(() => {
+        alert("Failed to copy URL");
+      });
+  };
+
+  const handleDownload = (url: string) => {
+    const link = document.createElement("a");
+    link.href = url;
+    link.download = url.split("/").pop() || "image";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <div className="gallery">
       {data?.pages.map((page, pageIndex) => (
         <Fragment key={pageIndex}>
           {page.map((image: IImage) => (
-            <div key={image.id} className="image-item">
-              <img src={image.download_url} alt={image.author} />
+            <div key={image.id}>
+              <img
+                src={image.download_url}
+                alt={image.author}
+                style={{ width: "100%", height: "100%" }}
+              />
               <p>{image.author}</p>
             </div>
           ))}
