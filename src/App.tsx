@@ -67,7 +67,7 @@ function App() {
                 className="w-full h-full group-hover:scale-95 delay-300 transition-all rounded-2xl object-center object-cover"
                 loading="lazy"
               />
-              <div className="flex gap-6 items-center absolute transition-all rounded-full p-4 bg-white group-hover:bottom-0 group-hover:right-0 -right-full -bottom-full delay-150">
+              <div className="flex gap-6 items-center absolute transition-all rounded-full p-4 bg-white group-hover:bottom-4 group-hover:right-4 -right-full -bottom-full delay-150">
                 <button onClick={() => handleCopy(item.url)}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
