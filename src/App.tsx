@@ -90,7 +90,7 @@ function App() {
                   </button>
                   <button
                     onClick={() => handleDownload(item.download_url)}
-                    className=" hover:rotate-3"
+                    className=" hover:rotate-3 transition-all hover:text-gray-700"
                   >
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
