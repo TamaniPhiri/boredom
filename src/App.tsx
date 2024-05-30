@@ -4,9 +4,10 @@ import useImages from "./hooks/useImages";
 import { useInView } from "react-intersection-observer";
 import { IImage } from "./types/interface";
 import toast from "react-hot-toast";
+import Loading from "./components/Loading";
 
 function App() {
-  const { data, fetchNextPage, hasNextPage, isFetchingNextPage } =
+  const { data, fetchNextPage, hasNextPage, isFetchingNextPage, isLoading } =
     useImages(30);
   const { ref, inView } = useInView();
 
@@ -103,8 +104,9 @@ function App() {
           ))}
         </div>
       ))}
+      {isLoading && <Loading />}
       <div ref={ref} style={{ height: "20px" }} />
-      {isFetchingNextPage && <p>Loading more images...</p>}
+      {isFetchingNextPage && <Loading />}
     </section>
   );
 }
