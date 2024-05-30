@@ -27,15 +27,26 @@ function App() {
       });
   };
 
-  const handleDownload = (url: string) => {
-    const link = document.createElement("a");
-    link.href = url;
-    link.download = url.split("/").pop() || "image";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+  const handleDownload = async (url: string) => {
+    try {
+      toast.loading("Please wait for your download", {
+        id: "dnd",
+      });
+      const response = await fetch(url);
+      const blob = await response.blob();
+      const link = document.createElement("a");
+      link.href = URL.createObjectURL(blob);
+      link.download = url.split("/").pop() || "image";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(link.href); // Clean up the URL object
+    } catch (error) {
+      console.error("Failed to download image", error);
+    } finally {
+      toast.dismiss("dnd");
+    }
   };
-
   return (
     <section className=" min-h-screen w-full flex flex-col items-center justify-center px-4 md:px-12">
       {data?.pages.map((page, pageIndex) => (
@@ -54,7 +65,7 @@ function App() {
                 className="w-full h-full group-hover:scale-95 delay-300 transition-all rounded-2xl object-center object-cover"
                 loading="lazy"
               />
-              <div className="flex gap-4 items-center absolute transition-all p-4 bg-white group-hover:bottom-0 group-hover:right-0 -right-full -bottom-full delay-150">
+              <div className="flex gap-6 items-center absolute transition-all rounded-full p-4 bg-white group-hover:bottom-0 group-hover:right-0 -right-full -bottom-full delay-150">
                 <button onClick={() => handleCopy(item.url)}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
