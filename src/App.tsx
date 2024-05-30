@@ -36,7 +36,7 @@ function App() {
   };
 
   return (
-    <div className="gallery">
+    <div className=" bg-slate-500">
       {data?.pages.map((page, pageIndex) => (
         <Fragment key={pageIndex}>
           {page.map((image: IImage) => (
@@ -44,7 +44,7 @@ function App() {
               <img
                 src={image.download_url}
                 alt={image.author}
-                style={{ width: "100%", height: "100%" }}
+                className=" w-5 h-7"
               />
               <p>{image.author}</p>
             </div>
