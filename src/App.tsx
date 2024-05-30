@@ -44,14 +44,17 @@ function App() {
           className="grid md:grid-cols-3 grid-cols-2 gap-4 py-12"
         >
           {page.map((item: IImage) => (
-            <div key={item.id} className="relative">
+            <div
+              key={item.id}
+              className="group h-96 relative w-full overflow-hidden"
+            >
               <img
                 src={item.download_url}
                 alt={item.author}
                 className="w-full h-full rounded-2xl object-center object-cover"
                 loading="lazy"
               />
-              <div className="flex gap-4 items-center absolute bottom-4 right-4">
+              <div className="flex gap-4 items-center absolute transition-all p-4 bg-white group-hover:bottom-0 group-hover:right-0 -right-full -bottom-full delay-150">
                 <button onClick={() => handleCopy(item.url)}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
