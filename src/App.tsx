@@ -3,6 +3,7 @@ import "./App.css";
 import useImages from "./hooks/useImages";
 import { useInView } from "react-intersection-observer";
 import { IImage } from "./types/interface";
+import toast from "react-hot-toast";
 
 function App() {
   const { data, fetchNextPage, hasNextPage, isFetchingNextPage } =
@@ -19,10 +20,10 @@ function App() {
     navigator.clipboard
       .writeText(url)
       .then(() => {
-        alert("URL copied to clipboard");
+        toast.success("Copied Url to clipboard");
       })
       .catch(() => {
-        alert("Failed to copy URL");
+        toast.error("Failed to copy URL");
       });
   };
 
@@ -64,7 +65,7 @@ function App() {
                     />
                   </svg>
                 </button>
-                <button>
+                <button onClick={() => handleDownload(item.download_url)}>
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     fill="none"
