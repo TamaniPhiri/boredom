@@ -3,7 +3,7 @@ import { fetchImages } from "../api/helpers/helpers";
 
 const useImages = (limit: number) => {
   return useInfiniteQuery(
-    ["images"],
+    "images",
     ({ pageParam = 1 }) => fetchImages(pageParam, limit),
     {
       getNextPageParam: (lastPage, pages) => {
