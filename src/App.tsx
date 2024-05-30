@@ -51,7 +51,7 @@ function App() {
               <img
                 src={item.download_url}
                 alt={item.author}
-                className="w-full h-full rounded-2xl object-center object-cover"
+                className="w-full h-full group-hover:scale-95 delay-300 transition-all rounded-2xl object-center object-cover"
                 loading="lazy"
               />
               <div className="flex gap-4 items-center absolute transition-all p-4 bg-white group-hover:bottom-0 group-hover:right-0 -right-full -bottom-full delay-150">
